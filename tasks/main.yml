@@ -43,7 +43,7 @@
 
 - name: Update Composer to latest version (if configured).
   command: >
-    {{ php_executable }} -d memory_limit=-1  {{ composer_path }} self-update {{ composer_version_branch }}
+    {{ php_executable }} -d memory_limit=-1 {{ composer_path }} self-update {{ composer_version_branch }}
   register: composer_update
   changed_when: "'Updating to version' in composer_update.stdout"
   when: composer_keep_updated | bool
