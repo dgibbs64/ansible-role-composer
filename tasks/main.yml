@@ -31,7 +31,7 @@
 
 - name: Run Composer installer.
   command: >
-    {{ php_executable }} composer-installer.php {% if composer_version_branch %} {{ composer_version_branch }}{% elif composer_version %} --version={{ composer_version }}{% endif %}
+    {{ php_executable }} -d memory_limit=-1 composer-installer.php {% if composer_version_branch %} {{ composer_version_branch }}{% elif composer_version %} --version={{ composer_version }}{% endif %}
     chdir=/tmp
   when: not composer_bin.stat.exists
 
